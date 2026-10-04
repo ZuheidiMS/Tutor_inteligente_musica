@@ -1,0 +1,904 @@
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LogiSmart | Centro de Control</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =====================================================
+             BARRA LATERAL
+        ====================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    L
+                </div>
+
+                <div class="brand-text">
+                    <h1>LogiSmart</h1>
+                    <span>CONTROL LOGÍSTICO</span>
+                </div>
+
+            </div>
+
+
+            <nav class="navigation">
+
+                <div class="nav-section-title">
+                    PRINCIPAL
+                </div>
+
+                <button class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </button>
+
+                <button class="nav-item" data-page="acceso">
+                    <span class="nav-icon">◉</span>
+                    <span>Control de acceso</span>
+                </button>
+
+                <button class="nav-item" data-page="verdad">
+                    <span class="nav-icon">◇</span>
+                    <span>Tabla de verdad</span>
+                </button>
+
+
+                <div class="nav-section-title">
+                    OPERACIÓN
+                </div>
+
+                <button class="nav-item" data-page="incidentes">
+                    <span class="nav-icon">!</span>
+                    <span>Incidentes</span>
+                    <span class="nav-badge">3</span>
+                </button>
+
+                <button class="nav-item" data-page="asistente">
+                    <span class="nav-icon">✦</span>
+                    <span>Asistente LLM</span>
+                </button>
+
+
+                <div class="nav-section-title">
+                    GESTIÓN
+                </div>
+
+                <button class="nav-item" data-page="riesgos">
+                    <span class="nav-icon">◆</span>
+                    <span>Riesgos éticos</span>
+                </button>
+
+                <button class="nav-item" data-page="reportes">
+                    <span class="nav-icon">▤</span>
+                    <span>Reportes</span>
+                </button>
+
+                <button class="nav-item" data-page="configuracion">
+                    <span class="nav-icon">⚙</span>
+                    <span>Configuración</span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="system-version">
+                    LogiSmart
+                    <span>v1.0</span>
+                </div>
+
+                <p>
+                    Sistema de apoyo a decisiones
+                </p>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             CONTENIDO PRINCIPAL
+        ====================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =================================================
+                 TOPBAR
+            ================================================== -->
+
+            <header class="topbar">
+
+                <div class="breadcrumb">
+
+                    <span>Inicio</span>
+
+                    <span class="breadcrumb-separator">
+                        /
+                    </span>
+
+                    <strong id="current-section">
+                        Dashboard
+                    </strong>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="connection-status">
+
+                        <span class="status-dot"></span>
+
+                        <span>
+                            Sistema operativo
+                        </span>
+
+                    </div>
+
+
+                    <div class="operator">
+
+                        <div class="operator-avatar">
+                            A
+                        </div>
+
+                        <div class="operator-info">
+
+                            <strong>
+                                Administrador
+                            </strong>
+
+                            <span>
+                                Operador
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 ÁREA DINÁMICA
+            ================================================== -->
+
+            <section id="app-content" class="page-content">
+
+
+                <!-- =============================================
+                     DASHBOARD
+                ============================================== -->
+
+                <div id="page-dashboard" class="page active-page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Resumen operativo
+                            </h2>
+
+                            <p>
+                                Monitoreo general del sistema LogiSmart
+                            </p>
+
+                        </div>
+
+
+                        <div class="page-actions">
+
+                            <button class="button button-secondary">
+                                ⟳ Actualizar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- KPIs -->
+
+                    <div class="kpi-grid">
+
+
+                        <div class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <span class="kpi-label">
+                                    CAMIONES ATENDIDOS
+                                </span>
+
+                                <div class="kpi-icon blue">
+                                    ◉
+                                </div>
+
+                            </div>
+
+                            <div class="kpi-value">
+                                <span id="kpi-camiones">1</span>
+                            </div>
+
+                            <div class="kpi-description">
+                                Registros almacenados
+                            </div>
+
+                        </div>
+
+
+                        <div class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <span class="kpi-label">
+                                    INCIDENTES ABIERTOS
+                                </span>
+
+                                <div class="kpi-icon orange">
+                                    !
+                                </div>
+
+                            </div>
+
+                            <div class="kpi-value">
+                                <span id="kpi-incidentes">3</span>
+                            </div>
+
+                            <div class="kpi-description">
+                                Requieren seguimiento
+                            </div>
+
+                        </div>
+
+
+                        <div class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <span class="kpi-label">
+                                    RIESGOS CRÍTICOS
+                                </span>
+
+                                <div class="kpi-icon red">
+                                    ◆
+                                </div>
+
+                            </div>
+
+                            <div class="kpi-value">
+                                <span id="kpi-riesgos">0</span>
+                            </div>
+
+                            <div class="kpi-description">
+                                Sin riesgos críticos
+                            </div>
+
+                        </div>
+
+
+                        <div class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <span class="kpi-label">
+                                    EVALUACIONES LLM
+                                </span>
+
+                                <div class="kpi-icon purple">
+                                    ✦
+                                </div>
+
+                            </div>
+
+                            <div class="kpi-value">
+                                <span id="kpi-llm">2</span>
+                            </div>
+
+                            <div class="kpi-description">
+                                Procesadas con Ollama
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTENIDO DASHBOARD -->
+
+                    <div class="dashboard-grid">
+
+
+                        <!-- ACTIVIDAD -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Actividad reciente
+                                    </h3>
+
+                                    <p>
+                                        Últimas operaciones registradas
+                                    </p>
+
+                                </div>
+
+                                <button class="text-button">
+                                    Ver todo
+                                </button>
+
+                            </div>
+
+
+                            <div class="activity-list">
+
+
+                                <div class="activity-item">
+
+                                    <div class="activity-indicator blue">
+                                        A
+                                    </div>
+
+                                    <div class="activity-content">
+
+                                        <strong>
+                                            CAM-001
+                                        </strong>
+
+                                        <span>
+                                            Evaluación de control de acceso
+                                        </span>
+
+                                    </div>
+
+                                    <span class="status-badge success">
+                                        PERMITIDO
+                                    </span>
+
+                                </div>
+
+
+                                <div class="activity-item">
+
+                                    <div class="activity-indicator orange">
+                                        I
+                                    </div>
+
+                                    <div class="activity-content">
+
+                                        <strong>
+                                            CAM-102
+                                        </strong>
+
+                                        <span>
+                                            Incidente de material peligroso
+                                        </span>
+
+                                    </div>
+
+                                    <span class="status-badge warning">
+                                        INSPECCIÓN
+                                    </span>
+
+                                </div>
+
+
+                                <div class="activity-item">
+
+                                    <div class="activity-indicator purple">
+                                        L
+                                    </div>
+
+                                    <div class="activity-content">
+
+                                        <strong>
+                                            Clasificación LLM
+                                        </strong>
+
+                                        <span>
+                                            Evaluación híbrida completada
+                                        </span>
+
+                                    </div>
+
+                                    <span class="status-badge success">
+                                        COMPLETADO
+                                    </span>
+
+                                </div>
+
+
+                                <div class="activity-item">
+
+                                    <div class="activity-indicator blue">
+                                        A
+                                    </div>
+
+                                    <div class="activity-content">
+
+                                        <strong>
+                                            CAM-087
+                                        </strong>
+
+                                        <span>
+                                            Registro de acceso procesado
+                                        </span>
+
+                                    </div>
+
+                                    <span class="status-badge success">
+                                        PERMITIDO
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ESTADO DEL SISTEMA -->
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+
+                                    <h3>
+                                        Estado del sistema
+                                    </h3>
+
+                                    <p>
+                                        Servicios principales
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="service-list">
+
+
+                                <div class="service-item">
+
+                                    <div class="service-info">
+
+                                        <span class="service-name">
+                                            MongoDB
+                                        </span>
+
+                                        <span class="service-description">
+                                            Base de datos
+                                        </span>
+
+                                    </div>
+
+                                    <span class="service-status">
+                                        <span></span>
+                                        Operativo
+                                    </span>
+
+                                </div>
+
+
+                                <div class="service-item">
+
+                                    <div class="service-info">
+
+                                        <span class="service-name">
+                                            Ollama
+                                        </span>
+
+                                        <span class="service-description">
+                                            Modelo LLM
+                                        </span>
+
+                                    </div>
+
+                                    <span class="service-status">
+                                        <span></span>
+                                        Operativo
+                                    </span>
+
+                                </div>
+
+
+                                <div class="service-item">
+
+                                    <div class="service-info">
+
+                                        <span class="service-name">
+                                            Motor lógico
+                                        </span>
+
+                                        <span class="service-description">
+                                            Reglas A / E / C / H
+                                        </span>
+
+                                    </div>
+
+                                    <span class="service-status">
+                                        <span></span>
+                                        Operativo
+                                    </span>
+
+                                </div>
+
+
+                                <div class="service-item">
+
+                                    <div class="service-info">
+
+                                        <span class="service-name">
+                                            API
+                                        </span>
+
+                                        <span class="service-description">
+                                            Flask
+                                        </span>
+
+                                    </div>
+
+                                    <span class="service-status">
+                                        <span></span>
+                                        Operativo
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="system-health">
+
+                                <div class="health-header">
+
+                                    <span>
+                                        Salud del sistema
+                                    </span>
+
+                                    <strong>
+                                        100%
+                                    </strong>
+
+                                </div>
+
+                                <div class="health-bar">
+
+                                    <div></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PIE INFORMATIVO -->
+
+                    <div class="information-banner">
+
+                        <div class="information-icon">
+                            i
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Sistema de apoyo a decisiones
+                            </strong>
+
+                            <p>
+                                Las decisiones de acceso utilizan reglas de lógica
+                                proposicional. El asistente LLM funciona como apoyo
+                                y requiere revisión humana cuando existe discrepancia.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PÁGINAS TEMPORALES
+                ================================================== -->
+
+                <div id="page-acceso" class="page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Control de acceso
+                            </h2>
+
+                            <p>
+                                Evaluación lógica de vehículos y condiciones de ingreso
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="empty-page">
+
+                        <div class="empty-icon">
+                            ◉
+                        </div>
+
+                        <h3>
+                            Módulo de control de acceso
+                        </h3>
+
+                        <p>
+                            Aquí conectaremos el motor de reglas A, E, C y H.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="page-verdad" class="page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Tabla de verdad
+                            </h2>
+
+                            <p>
+                                Simulación de las reglas de lógica proposicional
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="empty-page">
+
+                        <div class="empty-icon">
+                            ◇
+                        </div>
+
+                        <h3>
+                            Laboratorio de lógica
+                        </h3>
+
+                        <p>
+                            Aquí construiremos el simulador de las reglas A, E, C y H.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="page-incidentes" class="page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Incidentes
+                            </h2>
+
+                            <p>
+                                Clasificación híbrida y seguimiento de incidentes
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="empty-page">
+
+                        <div class="empty-icon">
+                            !
+                        </div>
+
+                        <h3>
+                            Bandeja de incidentes
+                        </h3>
+
+                        <p>
+                            Aquí conectaremos MongoDB, reglas y Ollama.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="page-asistente" class="page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Asistente LLM
+                            </h2>
+
+                            <p>
+                                Consulta información registrada en LogiSmart
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="empty-page">
+
+                        <div class="empty-icon">
+                            ✦
+                        </div>
+
+                        <h3>
+                            Asistente inteligente
+                        </h3>
+
+                        <p>
+                            El asistente utilizará información de MongoDB como contexto.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="page-riesgos" class="page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Riesgos éticos
+                            </h2>
+
+                            <p>
+                                Evaluación, mitigación y seguimiento de riesgos de IA
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="empty-page">
+
+                        <div class="empty-icon">
+                            ◆
+                        </div>
+
+                        <h3>
+                            Matriz de riesgos
+                        </h3>
+
+                        <p>
+                            Aquí mostraremos los riesgos registrados y su nivel residual.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="page-reportes" class="page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Reportes
+                            </h2>
+
+                            <p>
+                                Generación y exportación de información del sistema
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="empty-page">
+
+                        <div class="empty-icon">
+                            ▤
+                        </div>
+
+                        <h3>
+                            Centro de reportes
+                        </h3>
+
+                        <p>
+                            Exportación disponible en PDF, CSV y JSON.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="page-configuracion" class="page">
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <h2>
+                                Configuración
+                            </h2>
+
+                            <p>
+                                Parámetros generales de LogiSmart
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="empty-page">
+
+                        <div class="empty-icon">
+                            ⚙
+                        </div>
+
+                        <h3>
+                            Configuración del sistema
+                        </h3>
+
+                        <p>
+                            Modelo Ollama, umbrales y modo de simulación.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="/js/app.js"></script>
+
+</body>
+</html>
+
